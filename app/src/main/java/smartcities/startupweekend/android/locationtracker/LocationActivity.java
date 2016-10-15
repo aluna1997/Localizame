@@ -21,6 +21,8 @@ import android.widget.Toast;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Locale;
 
@@ -75,6 +77,16 @@ public class LocationActivity extends AppCompatActivity implements
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
                 //intent.setClassName("com.google.android.apps.maps", "com.google.android.maps.MapsActivity");
                 LocationActivity.this.startActivity(intent);
+
+
+                // Escribir un mensaje a la base de datos Firebase
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                DatabaseReference myRef = database.getReference("message");
+
+                myRef.setValue("Hello, World!");
+
+
+
 
 
             }
