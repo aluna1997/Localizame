@@ -1,13 +1,14 @@
 package smartcities.startupweekend.android.locationtracker;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -21,9 +22,12 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
 
+import java.util.Locale;
+
 public class LocationActivity extends AppCompatActivity implements
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener {
+
     /*
     GoogleApiClient.ConnectionCallbacks: determina si el cliente
     está conectado (onConnected()) o desconectado (onConnectionSuspended()).
@@ -45,6 +49,11 @@ public class LocationActivity extends AppCompatActivity implements
     private TextView mLatitude;
     private TextView mLongitude;
 
+
+    private String latitud;
+    private String longitud;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -57,8 +66,17 @@ public class LocationActivity extends AppCompatActivity implements
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                //.setAction("Action", null).show();
+                latitud = String.valueOf(mLastLocation.getLatitude());
+                longitud = String.valueOf(mLastLocation.getLongitude());
+
+                String uri = String.format(Locale.ENGLISH, "geo:%s,%s", latitud, longitud);
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+                //intent.setClassName("com.google.android.apps.maps", "com.google.android.maps.MapsActivity");
+                LocationActivity.this.startActivity(intent);
+
+
             }
         });
 
