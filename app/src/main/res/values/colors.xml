@@ -4,4 +4,15 @@
     <color name="colorPrimaryDark">#4254e0</color>
     <color name="colorAccent">#FF4081</color>
     <color name="durazno600">#f44336</color>
+
+    <color name="primary">#455A64</color>
+    <color name="black">#000000</color>
+    <color name="jet">#222222</color>
+    <color name="oil">#333333</color>
+    <color name="monsoon">#777777</color>
+    <color name="jumbo">#888888</color>
+    <color name="aluminum">#999999</color>
+    <color name="base">#AAAAAA</color>
+    <color name="iron">#CCCCCC</color>
+    <color name="white">#FFFFFF</color>
 </resources>
