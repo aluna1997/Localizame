@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "10424007300",
+    "firebase_url": "https://localizame-39aac.firebaseio.com",
+    "project_id": "localizame-39aac",
+    "storage_bucket": "localizame-39aac.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:10424007300:android:e659d9288f7a523d",
+        "android_client_info": {
+          "package_name": "smartcities.startupweekend.android.alertlocalization"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "10424007300-7o0go5ogrj11lpbcgdlmqqomaf86tm4g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "smartcities.startupweekend.android.alertlocalization",
+            "certificate_hash": "60254A067B87EC50942142F783F1ECAC12603C9E"
+          }
+        },
+        {
+          "client_id": "10424007300-c3lbgarba9epb4d0h4gmm0arss76h0dt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAUGtQoFI1LDs0d8g7nMfQi7DBGkPXCBFg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "10424007300-c3lbgarba9epb4d0h4gmm0arss76h0dt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
