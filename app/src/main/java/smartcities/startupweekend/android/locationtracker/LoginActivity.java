@@ -1,19 +1,17 @@
 package smartcities.startupweekend.android.locationtracker;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-
-import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import butterknife.ButterKnife;
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 
 /**
@@ -23,13 +21,12 @@ public class LoginActivity  extends  AppCompatActivity {
     private static final String TAG = "LoginActivity";
     private static final int REQUEST_SIGNUP = 0;
 
-    //@BindView(R.id.input_email) EditText _emailText;
     @BindView(R.id.input_password)
     EditText _passwordText;
     @BindView(R.id.btn_login)
     Button _loginButton;
     @BindView(R.id.link_signup)
-    TextView _signupLink;
+    Button _signupButton;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -42,6 +39,13 @@ public class LoginActivity  extends  AppCompatActivity {
             @Override
             public void onClick(View v) {
                 login();
+            }
+        });
+
+        _signupButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                signup();
             }
         });
 
@@ -63,7 +67,6 @@ public class LoginActivity  extends  AppCompatActivity {
         progressDialog.setMessage("Authenticating...");
         progressDialog.show();
 
-        //String email = _emailText.getText().toString();
         String password = _passwordText.getText().toString();
 
         new android.os.Handler().postDelayed(
@@ -101,8 +104,13 @@ public class LoginActivity  extends  AppCompatActivity {
     }
 
     public void onLoginSuccess() {
-        _loginButton.setEnabled(true);
-        Intent intent = new Intent(LoginActivity.this,LocationActivity.class);
+        Intent intent = new Intent(LoginActivity.this,SendActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    public void signup(){
+        Intent intent = new Intent(LoginActivity.this,ContactsActivity.class);
         startActivity(intent);
     }
 

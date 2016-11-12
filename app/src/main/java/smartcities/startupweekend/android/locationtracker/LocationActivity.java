@@ -21,10 +21,9 @@ import android.widget.Toast;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Locale;
+
 
 public class LocationActivity extends AppCompatActivity implements
         GoogleApiClient.ConnectionCallbacks,
@@ -56,6 +55,7 @@ public class LocationActivity extends AppCompatActivity implements
     private String longitud;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -68,29 +68,20 @@ public class LocationActivity extends AppCompatActivity implements
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                //.setAction("Action", null).show();
+
+
                 latitud = String.valueOf(mLastLocation.getLatitude());
                 longitud = String.valueOf(mLastLocation.getLongitude());
 
                 String uri = String.format(Locale.ENGLISH, "geo:%s,%s", latitud, longitud);
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
-                //intent.setClassName("com.google.android.apps.maps", "com.google.android.maps.MapsActivity");
                 LocationActivity.this.startActivity(intent);
-
-
-                // Escribir un mensaje a la base de datos Firebase
-                FirebaseDatabase database = FirebaseDatabase.getInstance();
-                DatabaseReference myRef = database.getReference("message");
-
-                myRef.setValue("Hello, World!");
-
-
 
 
 
             }
         });
+
 
         // Referencias UI
         mLatitude = (TextView) findViewById(R.id.tv_latitude);
@@ -191,6 +182,7 @@ public class LocationActivity extends AppCompatActivity implements
         } else {
             mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
             if (mLastLocation != null) {
+
                 mLatitude.setText(String.valueOf(mLastLocation.getLatitude()));
                 mLongitude.setText(String.valueOf(mLastLocation.getLongitude()));
             } else {
@@ -198,6 +190,8 @@ public class LocationActivity extends AppCompatActivity implements
             }
         }
     }
+
+
 
     @Override
     public void onConnectionSuspended(int i) {
