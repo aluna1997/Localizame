@@ -21,6 +21,8 @@ import android.widget.Toast;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Locale;
 
@@ -50,11 +52,17 @@ public class LocationActivity extends AppCompatActivity implements
     private TextView mLatitude;
     private TextView mLongitude;
 
-
+    //Ubicación
     private String latitud;
     private String longitud;
 
+    //Firebase
 
+    //Obtener referencia a la raíz
+    DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+    //Obtener referencia a una rama
+    DatabaseReference latitudRef = reference.child("latitud");
+    DatabaseReference longitudRef = reference.child("longitud");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,7 +86,7 @@ public class LocationActivity extends AppCompatActivity implements
                 LocationActivity.this.startActivity(intent);
 
 
-
+                modificar(view,latitud,longitud);
             }
         });
 
@@ -102,6 +110,7 @@ public class LocationActivity extends AppCompatActivity implements
     protected void onStart() {
         super.onStart();
         mGoogleApiClient.connect();
+
     }
 
     protected void onStop() {
@@ -201,5 +210,23 @@ public class LocationActivity extends AppCompatActivity implements
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
+    }
+
+
+
+    //Sube los strings latitud y longitud a firebase
+    public void modificar(View view,String latitud, String longitud) {
+        //Escribir en la base de datos
+        /* El método "setValue()" funciona con:
+           String,Long,Double,Boolean,Map<String,Objecto>,List<Object> */
+        latitudRef.setValue(latitud);
+        longitudRef.setValue(longitud);
+    }
+
+    @Override
+    public void onBackPressed() {
+        // disable going back to the MainActivity
+        Intent intent = new Intent(LocationActivity.this,LoginActivity.class);
+        startActivity(intent);
     }
 }

@@ -43,7 +43,8 @@
             android:text="New Text"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             tools:text="20.3"
-            android:textSize="24dp" />
+            android:textSize="24dp"
+            android:textColor="#223fb3" />
 
             <!--Texto Longitud-->
             <TextView
@@ -56,7 +57,9 @@
                 android:text="New Text"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 tools:text="45.2"
-                android:textSize="24dp" />
+                android:textSize="24dp"
+                style="@style/AppTheme"
+                android:textColor="@color/colorPrimary" />
         </TableRow>
 
 

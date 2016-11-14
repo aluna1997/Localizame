@@ -97,11 +97,6 @@ public class LoginActivity  extends  AppCompatActivity {
     }
     */
 
-    @Override
-    public void onBackPressed() {
-        // disable going back to the MainActivity
-        moveTaskToBack(true);
-    }
 
     public void onLoginSuccess() {
         Intent intent = new Intent(LoginActivity.this,SendActivity.class);
@@ -110,7 +105,7 @@ public class LoginActivity  extends  AppCompatActivity {
     }
 
     public void signup(){
-        Intent intent = new Intent(LoginActivity.this,ContactsActivity.class);
+        Intent intent = new Intent(LoginActivity.this,LocationActivity.class);
         startActivity(intent);
     }
 

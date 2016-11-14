@@ -244,4 +244,11 @@ public class SendActivity extends AppCompatActivity {
 
         return photo;
     }
+
+    @Override
+    public void onBackPressed() {
+        // disable going back to the MainActivity
+        Intent intent = new Intent(SendActivity.this,LoginActivity.class);
+        startActivity(intent);
+    }
 }
